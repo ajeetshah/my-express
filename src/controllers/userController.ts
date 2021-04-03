@@ -7,12 +7,7 @@ import { IUser } from '../models/userModel'
 const User = dbModel.User
 
 export function create(req: Request, res: Response) {
-  if (
-    !req.body.email ||
-    !req.body.firstname ||
-    !req.body.lastname ||
-    !req.body.password
-  ) {
+  if (!req.body.email || !req.body.firstname || !req.body.lastname || !req.body.password) {
     res.status(400).send({
       message: 'Content can not be empty!',
     })

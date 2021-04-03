@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const debug = require('debug').debug('quizzes-backend:server')
+const debug = require('debug').debug('my-express:server')
 
 import path from 'path'
 import dotenv from 'dotenv'
