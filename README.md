@@ -1,5 +1,17 @@
 # my-express
 
+## Configure the env
+
+Open the .env file and change below values:
+
+```bash
+EXPRESS_DB_HOST=localhost
+EXPRESS_DB_POST=5432
+EXPRESS_DB_USER=postgres # your username
+EXPRESS_DB_PASS=password # your password
+EXPRESS_DB_NAME=my-express
+```
+
 ## Start the development server
 
 ```bash
