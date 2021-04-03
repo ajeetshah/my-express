@@ -9,7 +9,7 @@ EXPRESS_DB_HOST=localhost
 EXPRESS_DB_POST=5432
 EXPRESS_DB_USER=postgres # your username
 EXPRESS_DB_PASS=password # your password
-EXPRESS_DB_NAME=my-express
+EXPRESS_DB_NAME=my-express # your database name
 ```
 
 ## Start the development server
