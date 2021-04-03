@@ -75,7 +75,7 @@ const v = '/v1'
 app.use(`${v}/`, indexRouter)
 app.use(`${v}/auth`, authRouter)
 app.use(`${v}/users`, isLoggedIn, userRouter)
-app.use(`${v}/posts`, isLoggedIn, postRouter)
+app.use(`${v}/posts`, postRouter)
 
 app.use(function (req: Request, res: Response, next: NextFunction) {
   next(createError(404))
