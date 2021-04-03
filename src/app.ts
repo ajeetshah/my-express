@@ -13,6 +13,7 @@ import userRouter from './routers/userRouter'
 import authRouter from './routers/authRouter'
 import dbModel from './models/dbModel'
 import { isLoggedIn } from './middlewares/authMiddleware'
+import postRouter from './routers/postRouter'
 
 const User = dbModel.User
 const LocalStrategy = passportLocal.Strategy
@@ -74,6 +75,7 @@ const v = '/v1'
 app.use(`${v}/`, indexRouter)
 app.use(`${v}/auth`, authRouter)
 app.use(`${v}/users`, isLoggedIn, userRouter)
+app.use(`${v}/posts`, isLoggedIn, postRouter)
 
 app.use(function (req: Request, res: Response, next: NextFunction) {
   next(createError(404))

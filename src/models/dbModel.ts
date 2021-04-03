@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize'
+import postModel from './postModel'
 import userModel from './userModel'
 
 const sequelize = new Sequelize(
@@ -22,6 +23,7 @@ const sequelize = new Sequelize(
 const dbModel = {
   sequelize: sequelize,
   User: userModel(sequelize),
+  Post: postModel(sequelize),
 }
 
 export default dbModel
