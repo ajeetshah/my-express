@@ -1,3 +1,4 @@
+import fs from 'fs'
 import { Request, Response } from 'express'
 import { Op } from 'sequelize'
 import dbModel from '../models/dbModel'
@@ -13,20 +14,30 @@ export function create(req: Request<any, any, IPost>, res: Response) {
     return
   }
 
-  const post: IPost = {
-    title: req.body.title,
-    description: req.body.description,
-    image: req.body.image,
-  }
-  Post.create(post)
-    .then((data) => {
-      res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || 'Some error occurred while creating the post.',
-      })
-    })
+  const fileNameWithExtension = `${req.file.filename}-${req.file.originalname}`
+  const newPath = `./uploads/${fileNameWithExtension}`
+
+  fs.rename(req.file.path, newPath, function (err) {
+    if (err) {
+      console.log(err)
+      res.send(500)
+    } else {
+      const post: IPost = {
+        title: req.body.title,
+        description: req.body.description,
+        image: fileNameWithExtension,
+      }
+      Post.create(post)
+        .then((data) => {
+          res.send(data)
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || 'Some error occurred while creating the post.',
+          })
+        })
+    }
+  })
 }
 
 export function findAll(req: Request, res: Response) {

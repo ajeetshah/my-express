@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import multer from 'multer'
 import {
   create,
   findAll,
@@ -8,9 +9,11 @@ import {
   deleteAll,
 } from '../controllers/postController'
 
+const upload = multer({ dest: './uploads/' })
+
 const postRouter = Router()
 
-postRouter.post('/', create)
+postRouter.post('/', upload.single('image'), create)
 postRouter.get('/', findAll)
 postRouter.get('/:id', findOne)
 postRouter.put('/:id', update)
